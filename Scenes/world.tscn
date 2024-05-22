@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgwya1dbq7w80"]
+
+[ext_resource type="PackedScene" uid="uid://dcf5ye6u2h5tm" path="res://Scenes/tile_map.tscn" id="1_15dsn"]
+[ext_resource type="PackedScene" uid="uid://cpgydd2371hsr" path="res://Scenes/player.tscn" id="2_wgaws"]
+[ext_resource type="PackedScene" uid="uid://bio5m6f21lwnv" path="res://Scenes/player_detection.tscn" id="3_sgnjl"]
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_15dsn")]
+layer_0/tile_data = PackedInt32Array(65535, 196608, 0, -1, 65536, 0, -2, 65536, 0, 65534, 65536, 0, 131070, 65536, 0, 131071, 65536, 0, 65536, 65536, 0, 0, 65536, 0, -65536, 0, 0, -65537, 131072, 0, -65538, 262144, 0, -131072, 65536, 0, 196606, 0, 1, 196607, 0, 1, 131072, 0, 1, 65537, 65536, 1, 1, 65536, 1, -65535, 65536, 1, -131071, 65536, 1, 131073, 131072, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_wgaws")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+ignore_rotation = false
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+
+[node name="player_detection" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("3_sgnjl")]
+position = Vector2(31, -1)
+tilemap = NodePath("../TileMap")
+tile_pos = Vector2(5, 5)
