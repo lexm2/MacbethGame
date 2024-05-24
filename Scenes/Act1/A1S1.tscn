@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgwya1dbq7w80"]
+
+[ext_resource type="PackedScene" uid="uid://dcf5ye6u2h5tm" path="res://Scenes/tile_map.tscn" id="1_ncydp"]
+[ext_resource type="PackedScene" uid="uid://cpgydd2371hsr" path="res://Scenes/player.tscn" id="2_nlq2k"]
+[ext_resource type="PackedScene" uid="uid://bio5m6f21lwnv" path="res://Scenes/player_detection.tscn" id="3_mylag"]
+[ext_resource type="PackedScene" uid="uid://cf0n4xvjo67xx" path="res://Scenes/enemy.tscn" id="4_mkirt"]
+
+[node name="A1S1" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_ncydp")]
+layer_0/tile_data = PackedInt32Array(131068, 524289, 8, 65532, 393217, 8, -4, 524289, 8, -65540, 393217, 8, -131076, 327680, 3, -262146, 393217, 8, -262145, 393217, 8, -327680, 393217, 8, -327679, 393217, 8, -262142, 393217, 8, -196606, 393217, 8, -131069, 393217, 8, 196605, 393217, 8, 262142, 393217, 8, 262143, 393217, 8, 196608, 393217, 8, 196609, 393217, 8, -65533, 393217, 8, 3, 393217, 8, 65539, 393217, 8, 131075, 393217, 8, 196610, 393217, 8, 196611, 393217, 8, -65539, 393217, 8, -131075, 393217, 8, -3, 393217, 8, 65533, 458753, 8, 131070, 458753, 8, 196607, 458753, 8, 131072, 458753, 8, 131073, 262145, 8, 131074, 458753, 8, 65537, 589825, 6, 1, 655361, 6, -65535, 327681, 6, -65536, 196609, 3, -1, 1, 3, 0, 131073, 6, 65536, 1, 7, 131071, 1, 7, 65534, 1, 7, 65535, 1, 7, -2, 131073, 6, -65538, 458753, 3, -131074, 458753, 3, -131073, 458753, 3, -196608, 458753, 5, -131071, 131073, 6, -65537, 131073, 3, -131072, 458753, 3, -196611, 393217, 8, 131069, 393217, 8, 196606, 393217, 8, -131070, 458753, 8, -65534, 458753, 8, 2, 393217, 8, 65538, 393217, 8, -262143, 393217, 8, -262144, 393217, 8, -196609, 393217, 8, -196610, 393217, 8, -196607, 458753, 8)
+layer_1/tile_data = PackedInt32Array(-131074, 524289, 3, -65538, 589825, 3, -131073, 65537, 3, -1, 65537, 4, -131070, 327681, 7, -65534, 327681, 7, 131073, 327681, 7, 131072, 327681, 7, 196607, 393217, 7, 131070, 393217, 7, 65533, 393217, 7, -65540, 524289, 7, -262145, 524289, 7, -262143, 458753, 7)
+
+[node name="Player" parent="." instance=ExtResource("2_nlq2k")]
+z_index = 10
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+ignore_rotation = false
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+
+[node name="player_detection" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("3_mylag")]
+position = Vector2(31, -1)
+tilemap = NodePath("../TileMap")
+tile_pos = Vector2(5, 5)
+
+[node name="Enemy" parent="." instance=ExtResource("4_mkirt")]
+position = Vector2(165, -27)

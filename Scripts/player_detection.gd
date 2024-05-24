@@ -27,7 +27,7 @@ func _on_body_entered(body: Node2D) -> void:
 
         if not started:
             started = true
-            aniplayer.play()
+            #aniplayer.play()
             target_position = tilemap.map_to_local(tile_pos)
             lerp_time = 0.0  # Reset the lerp time
             state = State.LERP_TO_TARGET
@@ -59,9 +59,9 @@ func _process(delta: float) -> void:
             if t > 1.0:
                 t = 1.0
                 state = State.FOLLOW_PLAYER
+                player.enable_movement()
             player.camera.global_position = player.camera.global_position.lerp(player.global_position, t)
 
         State.FOLLOW_PLAYER:
-            player.enable_movement()
             # Normal behavior, e.g., following the player
             player.camera.global_position = player.global_position
