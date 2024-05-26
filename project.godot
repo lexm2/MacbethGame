@@ -22,15 +22,49 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"Macbeth": "res://Characters/Macbeth.dch"
+"All": "res://Characters/All.dch",
+"Angus": "res://Characters/Angus.dch",
+"Banquo": "res://Characters/Banquo.dch",
+"Donalbain": "res://Characters/Donalbain.dch",
+"Duncan": "res://Characters/Duncan.dch",
+"First Witch": "res://Characters/First Witch.dch",
+"Fleance": "res://Characters/Fleance.dch",
+"Lennox": "res://Characters/Lennox.dch",
+"Macbeth": "res://Characters/Macbeth.dch",
+"Malcolm": "res://Characters/Malcolm.dch",
+"Ross": "res://Characters/Ross.dch",
+"Second Witch": "res://Characters/Second Witch.dch",
+"Sergeant": "res://Characters/Sergeant.dch",
+"Third Witch": "res://Characters/Third Witch.dch"
 }
 directories/dtl_directory={
-"A1S1": "res://Timelines/A1S1.dtl"
+"A1S1": "res://Timelines/A1S1.dtl",
+"A1S2": "res://Timelines/A1S2.dtl",
+"A1S3": "res://Timelines/A1S3.dtl",
+"A1S4": "res://Timelines/A1S4.dtl",
+"A1S5": "res://Timelines/A1S5.dtl"
 }
 variables={}
 layout/style_list=[]
 layout/default_style="Default"
 glossary/default_case_sensitive=true
+text/letter_speed=0.01
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/advance_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+animations/join_default_length=0.5
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/join_default_wait=true
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/autopauses={}
 
 [display]
 
