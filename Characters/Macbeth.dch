@@ -8,7 +8,7 @@
 "sound_moods": {},
 "style": ""
 },
-"default_portrait": "Macbeth.pixelated",
+"default_portrait": "Macbeth.pixelated_nobg",
 "description": "",
 "display_name": "Macbeth",
 "mirror": false,
@@ -17,17 +17,34 @@
 "portraits": {
 "Macbeth.pixelated": {
 "export_overrides": {
-"image": "\"res://Assets/Portraits/Pixelated/Macbeth.pixelated.png\""
+"image": "\"res://Assets/Portraits/Pixelated/Macbeth/Macbeth.pixelated.png\""
 },
-"ignore_char_scale": false,
 "mirror": false,
 "offset": Vector2(0, 0),
-"scale": 0.5,
+"scale": 1,
+"scene": ""
+},
+"Macbeth.pixelated_nobg": {
+"export_overrides": {
+"image": "\"res://Assets/Portraits/Pixelated/Macbeth/Macbeth.pixelated_nobg.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
 "scene": ""
 },
 "MacbethfKing.pixelated": {
 "export_overrides": {
-"image": "\"res://Assets/Portraits/Pixelated/MacbethfKing.pixelated.png\""
+"image": "\"res://Assets/Portraits/Pixelated/Macbeth/MacbethfKing.pixelated.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"MacbethfKing.pixelated_nobg": {
+"export_overrides": {
+"image": "\"res://Assets/Portraits/Pixelated/Macbeth/MacbethfKing.pixelated_nobg.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

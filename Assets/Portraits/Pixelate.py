@@ -2,7 +2,7 @@ from PIL import Image
 import os
 import re
 
-def pixelate_image(input_image_path, block_size=8):
+def pixelate_image(input_image_path, block_size=10):
 
     directory, filename = os.path.split(input_image_path)
     base, ext = os.path.splitext(filename)
@@ -52,5 +52,5 @@ def pixelate_image(input_image_path, block_size=8):
         
         pixelated.save(output_image_path)
 
-input_path = r'C:\Users\lexkm\MacbethGame\Assets\Portraits\Banquo00015-1166207222.png'
+input_path = r"C:\Users\lexkm\stable-diffusion-webui\outputs\img2img-images\20240526\16\00029-3842142781.png"
 pixelate_image(input_path)

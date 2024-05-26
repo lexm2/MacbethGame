@@ -8,25 +8,25 @@
 "sound_moods": {},
 "style": ""
 },
-"default_portrait": "Banquo.pixelated_nobg",
+"default_portrait": "Macduff.pixelated_nobg",
 "description": "",
-"display_name": "Banquo",
+"display_name": "Macduff",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
 "portraits": {
-"Banquo.pixelated": {
+"Macduff.pixelated": {
 "export_overrides": {
-"image": "\"res://Assets/Portraits/Pixelated/Banquo/Banquo.pixelated.png\""
+"image": "\"res://Assets/Portraits/Pixelated/Macduff/Macduff.pixelated.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
 "scale": 1,
 "scene": ""
 },
-"Banquo.pixelated_nobg": {
+"Macduff.pixelated_nobg": {
 "export_overrides": {
-"image": "\"res://Assets/Portraits/Pixelated/Banquo/Banquo.pixelated_nobg.png\""
+"image": "\"res://Assets/Portraits/Pixelated/Macduff/Macduff.pixelated_nobg.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

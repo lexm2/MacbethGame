@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1dsyuwuwe5qb"
-path="res://.godot/imported/Macduff.pixelated.png-99ca3f8555e41b3075bb98fa7dce733a.ctex"
+uid="uid://dgvnb8op7tx7m"
+path="res://.godot/imported/MacbethfKing.pixelated_nobg.png-8d766351128e196f2ac213362f60e05a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Portraits/Pixelated/Macduff/Macduff.pixelated.png"
-dest_files=["res://.godot/imported/Macduff.pixelated.png-99ca3f8555e41b3075bb98fa7dce733a.ctex"]
+source_file="res://Assets/Portraits/Pixelated/Macbeth/MacbethfKing.pixelated_nobg.png"
+dest_files=["res://.godot/imported/MacbethfKing.pixelated_nobg.png-8d766351128e196f2ac213362f60e05a.ctex"]
 
 [params]
 

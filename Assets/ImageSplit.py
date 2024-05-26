@@ -32,4 +32,4 @@ def split_image(image_path, output_folder, grid_size=(8, 8)):
             print(f'Saved {cropped_image_path}')
 
 # Example usage
-split_image(r"Macbeth00014-3436280341.png", 'SplitImage')
+split_image(r"tileset.png", 'separated images',(10, 10))

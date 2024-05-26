@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1dsyuwuwe5qb"
-path="res://.godot/imported/Macduff.pixelated.png-99ca3f8555e41b3075bb98fa7dce733a.ctex"
+uid="uid://bj5s6gg2tfe2d"
+path="res://.godot/imported/img_3_3.png-1f51a90c1632c72b7093d5e646823abf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Portraits/Pixelated/Macduff/Macduff.pixelated.png"
-dest_files=["res://.godot/imported/Macduff.pixelated.png-99ca3f8555e41b3075bb98fa7dce733a.ctex"]
+source_file="res://Assets/separated images/img_3_3.png"
+dest_files=["res://.godot/imported/img_3_3.png-1f51a90c1632c72b7093d5e646823abf.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1dsyuwuwe5qb"
-path="res://.godot/imported/Macduff.pixelated.png-99ca3f8555e41b3075bb98fa7dce733a.ctex"
+uid="uid://du4rty57i55a0"
+path="res://.godot/imported/Banquo.pixelated_nobg.png-b1bffab086286e5dab30aff51aa5b168.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Portraits/Pixelated/Macduff/Macduff.pixelated.png"
-dest_files=["res://.godot/imported/Macduff.pixelated.png-99ca3f8555e41b3075bb98fa7dce733a.ctex"]
+source_file="res://Assets/Portraits/Pixelated/Banquo/Banquo.pixelated_nobg.png"
+dest_files=["res://.godot/imported/Banquo.pixelated_nobg.png-b1bffab086286e5dab30aff51aa5b168.ctex"]
 
 [params]
 
