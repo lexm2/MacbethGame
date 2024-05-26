@@ -1,6 +1,5 @@
 extends Area2D
 
-@onready var aniplayer: AnimationPlayer = $AnimationPlayer
 @export var tilemap: TileMap
 @export var tile_pos: Vector2 = Vector2()
 
@@ -27,7 +26,6 @@ func _on_body_entered(body: Node2D) -> void:
 
         if not started:
             started = true
-            #aniplayer.play()
             target_position = tilemap.map_to_local(tile_pos)
             lerp_time = 0.0  # Reset the lerp time
             state = State.LERP_TO_TARGET

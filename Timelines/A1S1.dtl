@@ -1,0 +1,4 @@
+join Macbeth 0
+Macbeth: Hello
+update Macbeth (MacbethfKing.pixelated) [animation="Heartbeat"]
+Macbeth: Bye
