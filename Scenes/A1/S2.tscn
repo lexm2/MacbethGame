@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcf5ye6u2h5tm"]
+[gd_scene load_steps=6 format=3 uid="uid://b6tvbkw1s0p6l"]
 
-[ext_resource type="Texture2D" uid="uid://cu3efctdgcgai" path="res://Assets/tileset.png" id="1_w5tws"]
-[ext_resource type="Texture2D" uid="uid://m60yjkywk1nk" path="res://Assets/isometric tileset/spritesheet.png" id="2_735np"]
+[ext_resource type="Texture2D" uid="uid://cu3efctdgcgai" path="res://Assets/tileset.png" id="1_1l3au"]
+[ext_resource type="Texture2D" uid="uid://m60yjkywk1nk" path="res://Assets/isometric tileset/spritesheet.png" id="2_fpofr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f7q4h"]
-texture = ExtResource("1_w5tws")
+texture = ExtResource("1_1l3au")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -8)
@@ -131,7 +131,7 @@ texture_region_size = Vector2i(32, 32)
 4:4/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ghilx"]
-texture = ExtResource("2_735np")
+texture = ExtResource("2_fpofr")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -497,7 +497,7 @@ tile_layout = 5
 tile_offset_axis = 1
 tile_size = Vector2i(32, 16)
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_f7q4h")
 sources/1 = SubResource("TileSetAtlasSource_ghilx")
 
@@ -508,6 +508,7 @@ rendering_quadrant_size = 32
 format = 2
 layer_0/name = "Layer0"
 layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(65535, 262144, 0)
 layer_1/name = "Layer1"
 layer_1/y_sort_enabled = true
 layer_1/y_sort_origin = 1
