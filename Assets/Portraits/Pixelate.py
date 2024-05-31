@@ -1,56 +1,61 @@
 from PIL import Image
 import os
 import re
+import sys
 
-def pixelate_image(input_image_path, block_size=10):
+class ImagePixelator:
+    def __init__(self, input_image_path, block_size = 8):
+        self._input_image_path = input_image_path
+        self._block_size = block_size
+        self._directory, self._filename = os.path.split(input_image_path)
+        self._base, self._ext = os.path.splitext(self._filename)
+        self._base = re.sub(r'[\d-]+', '', self._base)
+        self._output_directory = os.path.join(self._directory, 'Pixelated')
+        self._output_image_path = os.path.join(self._output_directory, self._base + '.pixelated.png')
 
-    directory, filename = os.path.split(input_image_path)
-    base, ext = os.path.splitext(filename)
+    def _get_valid_block_sizes(self, width, height):
+        """Return a list of block sizes that are divisors of both width and height."""
+        max_possible_size = min(width, height)
+        return [i for i in range(1, max_possible_size + 1) if width % i == 0 and height % i == 0]
 
-    base = re.sub(r'[\d-]+$', '', base)
-    
-    output_directory = os.path.join(directory, 'Pixelated')
-    if not os.path.exists(output_directory):
-        os.makedirs(output_directory)
+    def pixelate(self):
+        """Pixelate the image with the specified block size."""
+        if not os.path.exists(self._output_directory):
+            os.makedirs(self._output_directory)
 
-    output_image_path = os.path.join(output_directory, base + '.pixelated.png')
+        with Image.open(self._input_image_path) as img:
+            if img.mode != 'RGB':
+                img = img.convert('RGB')
 
-    with Image.open(input_image_path) as img:
+            width, height = img.size
+            valid_sizes = self._get_valid_1block_sizes(width, height)
 
-        if img.mode != 'RGB':
-            img = img.convert('RGB')
+            if self._block_size not in valid_sizes:
+                print(f"Error: Block size {self._block_size} is not a valid divisor of image dimensions ({width}x{height}).")
+                print("Valid block sizes are:", valid_sizes)
+                return
 
-        width, height = img.size
+            out_width = (width // self._block_size) * self._block_size
+            out_height = (height // self._block_size) * self._block_size
+            
+            pixelated = img.resize((out_width // self._block_size, out_height // self._block_size), resample=Image.NEAREST)
+            pixelated = pixelated.resize((out_width, out_height), resample=Image.NEAREST)
 
-        out_width = width // block_size
-        out_height = height // block_size
-        
-        pixelated = Image.new('RGB', (out_width, out_height))
-        
+            pixelated.save(self._output_image_path)
+            print(f"Pixelated image saved to {self._output_image_path}")
 
-        for x0 in range(0, width, block_size):
-            for y0 in range(0, height, block_size):
-
-                x1 = min(x0 + block_size, width)
-                y1 = min(y0 + block_size, height)
-                block = img.crop((x0, y0, x1, y1))
-                
-                r_total = g_total = b_total = 0
-                count = 0
-                for x in range(block.width):
-                    for y in range(block.height):
-                        r, g, b = block.getpixel((x, y))
-                        r_total += r
-                        g_total += g
-                        b_total += b
-                        count += 1
-                average_color = (r_total // count, g_total // count, b_total // count)
-
-                out_x = x0 // block_size
-                out_y = y0 // block_size
-                pixelated.putpixel((out_x, out_y), average_color)
-        
-        pixelated.save(output_image_path)
-
-input_path = r"C:\Users\lexkm\stable-diffusion-webui\outputs\img2img-images\20240526\16\00029-3842142781.png"
-pixelate_image(input_path)
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        input_path = sys.argv[1]
+        if len(sys.argv) > 2:
+            try:
+                block_size = int(sys.argv[2])
+                pixelator = ImagePixelator(input_path, block_size)
+                pixelator.pixelate()
+            except ValueError:
+                print("Please provide a valid integer for block size.")
+        else:
+            pixelator = ImagePixelator(input_path)
+            pixelator.pixelate()
+    else:
+        print("Usage: python Pixelate.py <image_path> <block_size>")
