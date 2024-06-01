@@ -8,12 +8,31 @@
 "sound_moods": {},
 "style": ""
 },
-"default_portrait": "",
+"default_portrait": "Fleance.pixelated_nobg",
 "description": "",
 "display_name": "Fleance",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
-"portraits": {},
+"portraits": {
+"Fleance.pixelated": {
+"export_overrides": {
+"image": "\"res://Assets/Portraits/Pixelated/Fleance/Fleance.pixelated.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Fleance.pixelated_nobg": {
+"export_overrides": {
+"image": "\"res://Assets/Portraits/Pixelated/Fleance/Fleance.pixelated_nobg.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 "scale": 1.0
 }

@@ -1,10 +1,10 @@
 # [A military camp near Forres. Trumpets sound. Enter King Duncan, his sons Malcolm and Donalbain, Lord Lennox and Attendants. Enter from the other direction a bleeding soldier.]
 join Duncan 1
-join Malcolm 1
-join Donalbain 1
+join Malcolm 2
+join Donalbain 3
 [wait time="0.5"]
 join Lennox 1
-join Sergeant 1
+join Sergeant 4
 Duncan: What bloody man is that? He can report —\
 As seemeth by his plight — of the revolt\
 The newest state.

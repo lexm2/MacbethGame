@@ -8,12 +8,31 @@
 "sound_moods": {},
 "style": ""
 },
-"default_portrait": "",
+"default_portrait": "Duncan.pixelated_nobg",
 "description": "",
 "display_name": "Duncan",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
-"portraits": {},
+"portraits": {
+"Duncan.pixelated": {
+"export_overrides": {
+"image": "\"res://Assets/Portraits/Pixelated/Duncan/Duncan.pixelated.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Duncan.pixelated_nobg": {
+"export_overrides": {
+"image": "\"res://Assets/Portraits/Pixelated/Duncan/Duncan.pixelated_nobg.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 "scale": 1.0
 }

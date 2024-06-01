@@ -49,7 +49,7 @@ variables={}
 layout/style_list=[]
 layout/default_style="Default"
 glossary/default_case_sensitive=true
-text/letter_speed=0.01
+text/letter_speed=0.02
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
@@ -66,6 +66,8 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
+portraits/default_portrait=""
+text/autocolor_names=true
 
 [display]
 
