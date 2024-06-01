@@ -28,7 +28,7 @@ class ImagePixelator:
                 img = img.convert('RGB')
 
             width, height = img.size
-            valid_sizes = self._get_valid_1block_sizes(width, height)
+            valid_sizes = self._get_valid_block_sizes(width, height)
 
             if self._block_size not in valid_sizes:
                 print(f"Error: Block size {self._block_size} is not a valid divisor of image dimensions ({width}x{height}).")
