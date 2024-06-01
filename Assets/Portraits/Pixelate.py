@@ -4,27 +4,35 @@ import re
 import sys
 
 class ImagePixelator:
-    def __init__(self, input_image_path, block_size = 8):
-        self._input_image_path = input_image_path
+    def __init__(self, input_dir, block_size=8, average_alpha=False):
+        self._input_dir = input_dir
         self._block_size = block_size
-        self._directory, self._filename = os.path.split(input_image_path)
-        self._base, self._ext = os.path.splitext(self._filename)
-        self._base = re.sub(r'[\d-]+', '', self._base)
-        self._output_directory = os.path.join(self._directory, 'Pixelated')
-        self._output_image_path = os.path.join(self._output_directory, self._base + '.pixelated.png')
+        self._average_alpha = average_alpha
+        self._output_directory = os.path.join(input_dir, 'Pixelated')
+        if not os.path.exists(self._output_directory):
+            os.makedirs(self._output_directory)
+
+    def _get_image_files(self):
+        """Return a list of image file paths in the input directory."""
+        supported_formats = ['.jpg', '.jpeg', '.png', '.bmp', '.gif']
+        return [os.path.join(self._input_dir, f) for f in os.listdir(self._input_dir)
+                if os.path.splitext(f)[1].lower() in supported_formats]
 
     def _get_valid_block_sizes(self, width, height):
         """Return a list of block sizes that are divisors of both width and height."""
         max_possible_size = min(width, height)
         return [i for i in range(1, max_possible_size + 1) if width % i == 0 and height % i == 0]
 
-    def pixelate(self):
-        """Pixelate the image with the specified block size."""
-        if not os.path.exists(self._output_directory):
-            os.makedirs(self._output_directory)
+    def pixelate_image(self, image_path):
+        """Pixelate a single image."""
+        base, ext = os.path.splitext(os.path.basename(image_path))
+        base = re.sub(r'[\d-]+', '', base)
+        output_image_path = os.path.join(self._output_directory, base + '.pixelated.png')
 
-        with Image.open(self._input_image_path) as img:
-            if img.mode != 'RGB':
+        with Image.open(image_path) as img:
+            if self._average_alpha and img.mode in ['RGBA', 'LA']:
+                img = img.convert('RGBA')
+            else:
                 img = img.convert('RGB')
 
             width, height = img.size
@@ -35,27 +43,35 @@ class ImagePixelator:
                 print("Valid block sizes are:", valid_sizes)
                 return
 
-            out_width = (width // self._block_size) * self._block_size
+            out_width = (width // self._block_size) * self._block, size
             out_height = (height // self._block_size) * self._block_size
             
+            # Resize down to get the blocky effect
             pixelated = img.resize((out_width // self._block_size, out_height // self._block_size), resample=Image.NEAREST)
-            pixelated = pixelated.resize((out_width, out_height), resample=Image.NEAREST)
+            
+            # If averaging alpha, calculate the average alpha for each block
+            if self._average_alpha and img.mode == 'RGBA':
+                alpha = img.split()[3]  # Get the alpha channel
+                small_alpha = alpha.resize((out_width // self._block_size, out_height // self._block_size), resample=Image.NEAREST)
+                pixelated.putalpha(small_alpha.resize((out_width, out_height), resample=Image.NEAREST))
 
-            pixelated.save(self._output_image_path)
-            print(f"Pixelated image saved to {self._output_image_path}")
+            # Resize back to original dimensions
+            pixelated = pixelated.resize((out_width, out_height), resample=Image.NEAREST)
+            pixelated.save(output_image_path)
+            print(f"Pixelated image saved to {output_image_path}")
+
+    def pixelate(self):
+        """Pixelate all images in the directory."""
+        image_files = self._get_image_files()
+        for image_path in image_files:
+            self.pixelate_image(image_path)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        input_path = sys.argv[1]
-        if len(sys.argv) > 2:
-            try:
-                block_size = int(sys.argv[2])
-                pixelator = ImagePixelator(input_path, block_size)
-                pixelator.pixelate()
-            except ValueError:
-                print("Please provide a valid integer for block size.")
-        else:
-            pixelator = ImagePixelator(input_path)
-            pixelator.pixelate()
+        input_dir = sys.argv[1]
+        block_size = int(sys.argv[2]) if len(sys.argv) > 2 else 8
+        average_alpha = sys.argv[3].lower() == 'true' if len(sys.argv) > 3 else False
+        pixelator = ImagePixelator(input_dir, block_size, average_alpha)
+        pixelator.pixelate()
     else:
-        print("Usage: python Pixelate.py <image_path> <block_size>")
+        print("Usage: python Pixelate.py <directory_path> <block_size> <average_alpha>")
