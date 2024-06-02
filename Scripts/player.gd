@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var camera: Camera2D = $Camera2D
+@onready var animatedSprite : AnimatedSprite2D = $AnimatedSprite2D
 const MAX_SPEED: float = 100.0
 var input: Vector2 = Vector2()
 
@@ -31,11 +31,26 @@ func handle_moving_state(delta: float) -> void:
         input = get_input()
         if input != Vector2.ZERO:
             velocity = input * MAX_SPEED * delta * 100  # Set velocity in the direction of input
+            update_animation(input)
         else:
             velocity = Vector2.ZERO  # Stop moving when there is no input
             state = State.IDLE
         move_and_slide()  # Move the player
 
+
+
+func update_animation(direction: Vector2) -> void:
+    if direction.x > 0:
+        animatedSprite.animation = "WalkFront" #walk_right
+    elif direction.x < 0:
+        animatedSprite.animation = "WalkRear" #walk_left
+    elif direction.y > 0:
+        animatedSprite.animation = "WalkFront" #walk_down
+    elif direction.y < 0:
+        animatedSprite.animation = "WalkRear" #walk_up
+    
+    animatedSprite.play()
+    
 func handle_disabled_state() -> void:
     # No movement or actions allowed in this state
     pass

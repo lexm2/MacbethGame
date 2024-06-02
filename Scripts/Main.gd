@@ -1,6 +1,5 @@
 extends Node
 
-
 const TILEMAP_NODE_PATH : String = "res://Scenes/A1/S"
 const STARTING_MAP : String = "res://Scenes/A1/S1.tscn"
 
