@@ -1,10 +1,4 @@
 # [A military camp near Forres. Trumpets sound. Enter King Duncan, his sons Malcolm and Donalbain, Lord Lennox and Attendants. Enter from the other direction a bleeding soldier.]
-join Duncan 1
-join Malcolm 2
-join Donalbain 3
-[wait time="0.5"]
-join Lennox 1
-join Sergeant 4
 Duncan: What bloody man is that? He can report —\
 As seemeth by his plight — of the revolt\
 The newest state.
@@ -52,7 +46,6 @@ My gashes cry for help.
 Duncan: So\
 well thy words become thee as thy wounds.\
 They smack of honor both. Go get him surgeons.
-leave Sergeant
 Duncan: Who comes here?
 Malcolm: The worthy Thane of Ross.
 Lennox: What a haste looks through his eyes. So should he look\

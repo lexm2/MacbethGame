@@ -46,8 +46,8 @@ directories/dtl_directory={
 "A1S5": "res://Timelines/A1S5.dtl"
 }
 variables={}
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_list=["res://DialogicStyles/Speaker_Textbox.tres"]
+layout/default_style="res://DialogicStyles/Speaker_Textbox.tres"
 glossary/default_case_sensitive=true
 text/letter_speed=0.02
 text/initial_text_reveal_skippable=true

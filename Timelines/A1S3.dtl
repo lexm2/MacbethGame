@@ -1,6 +1,3 @@
-join "First Witch" 1
-join "Second Witch" 1
-join "Third Witch" 1
 "First Witch": Where hast thou been, sister?
 "Second Witch": Killing swine.
 "Third Witch": Sister, where thou?
@@ -39,13 +36,8 @@ Thus do go about, about,\
 Thrice to thine and thrice to mine,\
 And thrice again to make up nine.\
 Peace, the charm's wound up.
-join Macbeth 1
-join Banquo 1
 Macbeth: So foul and fair a day I have not seen.
 Banquo: How far is't called to Forres?
-join "First Witch" 1
-join "Second Witch" 1
-join "Third Witch" 1
 Banquo: What are these,\
 So withered and so wild in their attire,\
 That look not like the inhabitants o' the earth,\
@@ -90,9 +82,6 @@ No more than to be Cawdor. Say from whence\
 You owe this strange intelligence, or why\
 Upon this blasted heath you stop our way\
 With such prophetic greeting? Speak, I charge you.
-leave "First Witch"
-leave "Second Witch"
-leave "Third Witch"
 # Make these fade
 Banquo: The earth hath bubbles, as the water has,\
 And these are of them. Whither are they vanished?
@@ -105,8 +94,6 @@ Macbeth: Your children shall be kings.
 Banquo: You shall be king.
 Macbeth: And Thane of Cawdor too. Went it not so?
 Banquo: To the selfsame tune and words.
-join Ross 1
-join Angus 1
 Banquo: Who's here?
 Ross: The king hath happily received, Macbeth,\
 The news of thy success; and when he reads\
