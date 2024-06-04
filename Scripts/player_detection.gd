@@ -1,65 +1,23 @@
 extends Area2D
 
-@export var tilemap: TileMap
-@export var tile_pos: Vector2 = Vector2()
+# Assuming other necessary variables and setup are already defined
 
-var started: bool = false
-var player: Node2D = null
-var target_position: Vector2 = Vector2()
-var lerp_duration: float = 1.0  # Duration of the lerp in seconds
-var lerp_time: float = 0.0
-var wait_time: float = 2.0  # Time to wait after reaching the target position
-var current_wait_time: float = 0.0
+# Signal to detect when a body enters the area
+signal body_entered_signal(body)
 
-enum State {
-    LERP_TO_TARGET,
-    WAIT,
-    LERP_BACK,
-    FOLLOW_PLAYER
-}
+func _ready():
 
-var state: State = State.FOLLOW_PLAYER
 
-func _on_body_entered(body: Node2D) -> void:
-    if body.has_method("player"):
-        player = body
-
-        if not started:
-            started = true
-            target_position = tilemap.map_to_local(tile_pos)
-            lerp_time = 0.0  # Reset the lerp time
-            state = State.LERP_TO_TARGET
-            player.disable_movement()
-
-func _process(delta: float) -> void:
-    if not started or not player:
-        return
-
-    match state:
-        State.LERP_TO_TARGET:
-            lerp_time += delta
-            var t: float = lerp_time / lerp_duration
-            if t > 1.0:
-                t = 1.0
-                state = State.WAIT
-                current_wait_time = 0.0
-            player.camera.global_position = player.camera.global_position.lerp(target_position, t)
-
-        State.WAIT:
-            current_wait_time += delta
-            if current_wait_time >= wait_time:
-                lerp_time = 0.0
-                state = State.LERP_BACK
-
-        State.LERP_BACK:
-            lerp_time += delta
-            var t: float = lerp_time / lerp_duration
-            if t > 1.0:
-                t = 1.0
-                state = State.FOLLOW_PLAYER
-                player.enable_movement()
-            player.camera.global_position = player.camera.global_position.lerp(player.global_position, t)
-
-        State.FOLLOW_PLAYER:
-            # Normal behavior, e.g., following the player
-            player.camera.global_position = player.global_position
+func _on_body_entered(body: Node) -> void:
+    # Check if the entered body is of type CharacterBody2D
+    if body is CharacterBody2D:
+        print("CharacterBody2D entered the detection area.")
+        emit_signal("body_entered_signal", body)
+        # Assuming runnable is passed somehow, e.g., via a signal or directly as a parameter
+        # Here we expect a callable to be passed with the signal or set as a member variable
+        if callable(runnable):
+            runnable.call(body)
+        else:
+            print("Provided runnable is not callable.")
+    else:
+        print("The entered body is not a CharacterBody2D.")

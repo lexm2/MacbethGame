@@ -42,6 +42,7 @@ directories/dtl_directory={
 "A1S1": "res://Timelines/A1S1.dtl",
 "A1S2": "res://Timelines/A1S2.dtl",
 "A1S3": "res://Timelines/A1S3.dtl",
+"A1S3P2": "res://Timelines/A1S3P2.dtl",
 "A1S4": "res://Timelines/A1S4.dtl",
 "A1S5": "res://Timelines/A1S5.dtl"
 }

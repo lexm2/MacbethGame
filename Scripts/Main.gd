@@ -6,7 +6,7 @@ const TILEMAP_NODE_PATH : String = "res://Scenes/A1/S"
 const STARTING_MAP : String = "res://Scenes/A1/S1.tscn"
 
 var current_tilemap: TileMap;
-var lerp_class = load("res://Scripts/lerp_to_signal.gd")
+var lerp_class = load("res://Scripts/lerp_to.gd")
 var lerp_instance = lerp_class.new()
 
 const scene_settings: Dictionary = {
