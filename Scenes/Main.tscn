@@ -1,16 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgwya1dbq7w80"]
+[gd_scene load_steps=3 format=3 uid="uid://bgwya1dbq7w80"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_v1wfi"]
-[ext_resource type="PackedScene" uid="uid://bk81vrgulells" path="res://Scenes/A1/S1.tscn" id="2_jwswr"]
 [ext_resource type="PackedScene" uid="uid://cpgydd2371hsr" path="res://Scenes/player.tscn" id="3_7v7rm"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_v1wfi")
-
-[node name="A1S3" parent="." instance=ExtResource("2_jwswr")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_7v7rm")]
+z_index = 10

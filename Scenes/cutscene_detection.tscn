@@ -1,12 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bio5m6f21lwnv"]
-
-[ext_resource type="Script" path="res://Scripts/player_detection.gd" id="1_r0euk"]
+[gd_scene load_steps=2 format=3 uid="uid://bio5m6f21lwnv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8tsr"]
 
 [node name="cutscene_detection" type="Area2D"]
 collision_mask = 2
-script = ExtResource("1_r0euk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_w8tsr")
