@@ -43,7 +43,7 @@ class ImagePixelator:
                 print("Valid block sizes are:", valid_sizes)
                 return
 
-            out_width = (width // self._block_size) * self._block, size
+            out_width = (width // self._block_size) * self._block_size
             out_height = (height // self._block_size) * self._block_size
             
             # Resize down to get the blocky effect

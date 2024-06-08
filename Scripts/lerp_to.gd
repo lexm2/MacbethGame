@@ -1,15 +1,12 @@
 extends Object
 
-
-
 var player: Node2D = null
 var camera: Camera2D = null
 var target_position: Vector2 = Vector2()
 var lerp_duration: float = 1.0  # Duration of the lerp in seconds
 var lerp_time: float
-var wait_time: float
-var current_wait_time: float = 0.0
 
+signal proceed_with_lerp_back()
 signal move_to_coordinates_finished()
 
 enum State {
@@ -27,18 +24,17 @@ var state: State = State.FOLLOW_PLAYER
 # @param tilePos: The tile position to move to.
 # @param lerpDuration: Duration of the lerp to the target position.
 # @param waitDuration: Duration to wait before lerping back.
-func move_to_coordinates(body: Node2D, currentCamera: Camera2D, tilemap: TileMap, tilePos: Vector2, lerpDuration: float = 1.0, waitDuration: float = 2.0) -> void:
+func move_to_coordinates(body: Node2D, currentCamera: Camera2D, tilemap: TileMap, tilePos: Vector2, _waitFor : bool = true, lerpDuration: float = 1.0) -> void:
     print("Moving to coordinates: " + str(tilePos))
     player = body
     camera = currentCamera
     target_position = tilemap.map_to_local(tilePos)
     lerp_time = 0.0
-    current_wait_time = 0.0
     lerp_time = lerpDuration
-    wait_time = waitDuration
     state = State.LERP_TO_TARGET
     print("LERP_TO_TARGET")
     player.disable_movement()
+    connect("proceed_with_lerp_back", Callable(self, "_proceed_with_lerp_back"))
 
 func _process(delta: float) -> void:
     if not player or not camera:
@@ -52,17 +48,12 @@ func _process(delta: float) -> void:
                 t = 1.0
                 state = State.WAIT
                 print("WAIT")
-                current_wait_time = 0.0
             camera.global_position = camera.global_position.lerp(target_position, t)
             print(camera.global_position)
             print(camera.global_position.lerp(target_position, t))
 
         State.WAIT:
-            current_wait_time += delta
-            if current_wait_time >= wait_time:
-                lerp_time = 0.0
-                state = State.LERP_BACK
-                print("LERP_BACK")
+            pass
 
         State.LERP_BACK:
             lerp_time += delta
@@ -78,3 +69,5 @@ func _process(delta: float) -> void:
         State.FOLLOW_PLAYER:
             camera.global_position = player.global_position
             
+func _proceed_with_lerp_back():
+    state = State.LERP_BACK

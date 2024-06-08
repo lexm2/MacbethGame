@@ -46,7 +46,9 @@ directories/dtl_directory={
 "A1S4": "res://Timelines/A1S4.dtl",
 "A1S5": "res://Timelines/A1S5.dtl"
 }
-variables={}
+variables={
+"SceneNum": 0
+}
 layout/style_list=["res://DialogicStyles/Speaker_Textbox.tres"]
 layout/default_style="res://DialogicStyles/Speaker_Textbox.tres"
 glossary/default_case_sensitive=true
