@@ -15,18 +15,9 @@
 "nicknames": [""],
 "offset": Vector2(0, 0),
 "portraits": {
-"Banquo.pixelated": {
-"export_overrides": {
-"image": "\"res://Assets/Portraits/Pixelated/Banquo/Banquo.pixelated.png\""
-},
-"mirror": false,
-"offset": Vector2(0, 0),
-"scale": 1,
-"scene": ""
-},
 "Banquo.pixelated_nobg": {
 "export_overrides": {
-"image": "\"res://Assets/Portraits/Pixelated/Banquo/Banquo.pixelated_nobg.png\""
+"image": "\"res://Assets/Portraits/Pixelated/NOBG/Banquo/Banquo.pixelated_nobg.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

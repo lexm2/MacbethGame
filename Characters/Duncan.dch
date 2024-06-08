@@ -15,18 +15,9 @@
 "nicknames": [""],
 "offset": Vector2(0, 0),
 "portraits": {
-"Duncan.pixelated": {
-"export_overrides": {
-"image": "\"res://Assets/Portraits/Pixelated/Duncan/Duncan.pixelated.png\""
-},
-"mirror": false,
-"offset": Vector2(0, 0),
-"scale": 1,
-"scene": ""
-},
 "Duncan.pixelated_nobg": {
 "export_overrides": {
-"image": "\"res://Assets/Portraits/Pixelated/Duncan/Duncan.pixelated_nobg.png\""
+"image": "\"res://Assets/Portraits/Pixelated/NOBG/Duncan/Duncan.pixelated_nobg.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

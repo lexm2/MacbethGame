@@ -22,7 +22,8 @@ var current_section: int = 1
 
 enum States {
     SECTION,
-    DIALOGIC
+    DIALOGIC,
+    BLOCK_EVENTS,
 }
 
 var state = States.DIALOGIC
@@ -42,13 +43,16 @@ func process_event():
             current_scene_index += 1
             var number_sections = get_total_sections(current_scene_index)
             if number_sections > 1:
-                state = States.SECTION
+                state = States.BLOCK_EVENTS
             process_scene(current_scene_index, current_section)
         States.SECTION:
             if (current_section == get_total_sections(current_scene_index)):
                 state = States.DIALOGIC
             current_section += 1
             process_scene(current_scene_index, current_section)
+        States.BLOCK_EVENTS:
+            pass
+        
 
 func show_map(scene):
     print("Showing scene #%s" % scene)
@@ -102,5 +106,7 @@ func _process(delta):
 func _on_tripwire_body_entered(body, area2d):
     print("Body entered the tripwire:", body)
     print("Tripwire node:", area2d)
+    state = States.SECTION
+    lerp_instance.move_to_coordinates(player, camera, current_map, Vector2( - 3, -35), 3)
     process_event()
 

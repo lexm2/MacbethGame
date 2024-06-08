@@ -15,18 +15,9 @@
 "nicknames": [""],
 "offset": Vector2(0, 0),
 "portraits": {
-"Donalbain.pixelated": {
-"export_overrides": {
-"image": "\"res://Assets/Portraits/Pixelated/Donalbain/Donalbain.pixelated.png\""
-},
-"mirror": false,
-"offset": Vector2(0, 0),
-"scale": 1,
-"scene": ""
-},
 "Donalbain.pixelated_nobg": {
 "export_overrides": {
-"image": "\"res://Assets/Portraits/Pixelated/Donalbain/Donalbain.pixelated_nobg.png\""
+"image": "\"res://Assets/Portraits/Pixelated/NOBG/Donalbain/Donalbain.pixelated_nobg.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
