@@ -28,15 +28,15 @@ enum States {
 var state = States.DIALOGIC
 
 func _ready():
-    Dialogic.timeline_ended.connect(end_timeline)
+    Dialogic.timeline_ended.connect(process_event)
     Dialogic.signal_event.connect(_on_dialogic_signal)
-    end_timeline()
+    process_event()
 
 func _on_dialogic_signal(argument: String):
     if argument == "proceed_with_lerp_back":
         lerp_instance.emit_signal("proceed_with_lerp_back")
 
-func end_timeline():
+func process_event():
     match state:
         States.DIALOGIC:
             current_scene_index += 1
@@ -58,6 +58,10 @@ func show_map(scene):
     current_tilemap = load(TILEMAP_NODE_PATH + str(scene) + ".tscn").instantiate()
     self.current_map = current_tilemap
     self.add_child(self.current_map)
+
+    for child in current_tilemap.get_children():
+        if child is Area2D:
+            child.body_entered.connect(_on_tripwire_body_entered.bind(child))
 
 func start_dialogic(next_scene_number: int, section: int=1):
     var scene_to_start = "A1S" + str(next_scene_number)
@@ -81,13 +85,22 @@ func process_setting(scene: int):
 func process_scene(scene: int, section: int):
     if section == 1:
         show_map(scene)
-    if scene == 3 and section == 1:
-        print("Attempting to move lerp")
-        lerp_instance.move_to_coordinates(player, camera, current_map, Vector2( - 3, -35), 3)
+    if scene == 3:
+        if section == 1:
+            lerp_instance.move_to_coordinates(player, camera, current_map, Vector2( - 3, -35), 3)
+        if section == 2:
+            player.disable_movement()
+            start_dialogic(3, 2)
+        
 
 func get_total_sections(scene: int) -> int:
     return scene_settings[scene].get("Sections", 1)
 
 func _process(delta):
     lerp_instance._process(delta)
+
+func _on_tripwire_body_entered(body, area2d):
+    print("Body entered the tripwire:", body)
+    print("Tripwire node:", area2d)
+    process_event()
 

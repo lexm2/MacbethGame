@@ -43,11 +43,11 @@ func update_animation(direction: Vector2) -> void:
     if direction.x > 0:
         animatedSprite.animation = "WalkFront" #walk_right
     elif direction.x < 0:
-        animatedSprite.animation = "WalkFront" #walk_left
+        animatedSprite.animation = "WalkRear" #walk_left
     elif direction.y > 0:
         animatedSprite.animation = "WalkFront" #walk_down
     elif direction.y < 0:
-        animatedSprite.animation = "WalkFront" #walk_up
+        animatedSprite.animation = "WalkRear" #walk_up
     
     animatedSprite.play()
     
