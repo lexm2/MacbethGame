@@ -49,6 +49,7 @@ func process_event():
             if (current_section == get_total_sections(current_scene_index)):
                 state = States.DIALOGIC
             current_section += 1
+            state = States.BLOCK_EVENTS
             process_scene(current_scene_index, current_section)
         States.BLOCK_EVENTS:
             pass
@@ -104,6 +105,7 @@ func _process(delta):
     lerp_instance._process(delta)
 
 func _on_tripwire_body_entered(body, area2d):
+    area2d.disable_collision()
     print("Body entered the tripwire:", body)
     print("Tripwire node:", area2d)
     state = States.SECTION

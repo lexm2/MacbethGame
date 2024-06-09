@@ -26,7 +26,13 @@ class ImagePixelator:
         """Pixelate a single image."""
         base, ext = os.path.splitext(os.path.basename(image_path))
         base = re.sub(r'[\d-]+', '', base)
+        
+        # Check if the output file already exists
         output_image_path = os.path.join(self._output_directory, base + '.pixelated.png')
+        counter = 0
+        while os.path.exists(output_image_path):
+            counter += 1
+            output_image_path = os.path.join(self._output_directory, base + f'_{counter}.pixelated.png')
 
         with Image.open(image_path) as img:
             if self._average_alpha and img.mode in ['RGBA', 'LA']:
