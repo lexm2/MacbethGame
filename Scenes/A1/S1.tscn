@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk81vrgulells"]
+[gd_scene load_steps=8 format=3 uid="uid://bk81vrgulells"]
 
 [ext_resource type="Texture2D" uid="uid://m60yjkywk1nk" path="res://Assets/isometric tileset/spritesheet.png" id="1_xy6d3"]
 [ext_resource type="Texture2D" uid="uid://daqyv00it5mu2" path="res://Assets/Trees/_5.pixelated.png" id="2_4knyo"]
+[ext_resource type="Texture2D" uid="uid://bsxnnw38neiil" path="res://Assets/Trees/TreeSwampTiles.png" id="3_sqyyl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_osnvs"]
 texture = ExtResource("1_xy6d3")
@@ -135,12 +136,23 @@ texture_region_size = Vector2i(64, 8)
 0:2/0 = 0
 0:2/0/texture_origin = Vector2i(0, 80)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ojdul"]
+texture = ExtResource("3_sqyyl")
+texture_region_size = Vector2i(64, 192)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 80)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 80)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 80)
+
 [sub_resource type="TileSet" id="TileSet_jsx6o"]
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(32, 16)
 sources/0 = SubResource("TileSetAtlasSource_osnvs")
 sources/1 = SubResource("TileSetAtlasSource_vv7q4")
+sources/2 = SubResource("TileSetAtlasSource_ojdul")
 
 [node name="S1" type="TileMap"]
 y_sort_enabled = true
@@ -153,7 +165,4 @@ layer_0/tile_data = PackedInt32Array(131071, 589824, 0, -1, 196608, 0, -65536, 0
 layer_1/name = "1"
 layer_1/y_sort_enabled = true
 layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array(-65534, 1, 2, 196605, 1, 2, 393216, 1, 2, -131069, 327680, 5, 65532, 131072, 5, -131076, 65536, 5, -393216, 0, 5, 327679, 655360, 4, 262147, 196608, 5, -1, 1, 2)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
+layer_1/tile_data = PackedInt32Array(-131069, 327680, 5, 65532, 131072, 5, -131076, 65536, 5, -393216, 0, 5, 327679, 655360, 4, 262147, 196608, 5, -65534, 2, 0, 196605, 131074, 0, 393216, 65538, 0, -1, 2, 0, 524283, 2, 0, 851977, 2, 0, 393230, 2, 0, 65542, 131074, 0, 65527, 327680, 5, 196602, 589824, 4, -65544, 589824, 4, -131083, 589824, 4, -12, 655360, 4, 262136, 655360, 4, 393211, 65536, 5, -196616, 65536, 5, 524286, 196608, 5, 655358, 589824, 4, 458753, 655360, 4, 524289, 655360, 4, 393213, 655360, 4)
