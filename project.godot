@@ -13,7 +13,8 @@ config_version=5
 config/name="Macbeth"
 run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://logo.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
@@ -79,6 +80,10 @@ window/size/viewport_height=300
 window/size/window_width_override=1000
 window/size/window_height_override=600
 window/per_pixel_transparency/allowed=true
+
+[editor]
+
+movie_writer/movie_file="C:/Users/lexkm/MacbethGame/Movie/Movie.avi"
 
 [editor_plugins]
 

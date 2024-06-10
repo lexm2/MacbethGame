@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgwya1dbq7w80"]
+[gd_scene load_steps=4 format=3 uid="uid://bgwya1dbq7w80"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_v1wfi"]
 [ext_resource type="PackedScene" uid="uid://cpgydd2371hsr" path="res://Scenes/player.tscn" id="3_7v7rm"]
+[ext_resource type="PackedScene" uid="uid://w1drvd4h5fcx" path="res://Scenes/Rain.tscn" id="3_lba3p"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_v1wfi")
@@ -9,6 +10,10 @@ script = ExtResource("1_v1wfi")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
+
+[node name="Rain" parent="Camera2D" instance=ExtResource("3_lba3p")]
+z_index = 100
+position = Vector2(40, -125)
 
 [node name="Player" parent="." instance=ExtResource("3_7v7rm")]
 z_index = 10

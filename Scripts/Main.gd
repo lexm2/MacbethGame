@@ -11,9 +11,9 @@ var lerp_instance = lerp_class.new()
 var startedSection: bool = false
 
 var scene_settings: Dictionary = {
-	1: {"Auto_Dialogic": true, "Hide_Player": true, "Sections": 1},
-	2: {"Auto_Dialogic": true, "Hide_Player": true, "Sections": 1},
-	3: {"Auto_Dialogic": true, "Hide_Player": false, "Sections": 2},
+	1: {"Auto_Dialogic": true, "Hide_Player": true, "Sections": 1, "Rain": true},
+	2: {"Auto_Dialogic": true, "Hide_Player": true, "Sections": 1, "Rain": false},
+	3: {"Auto_Dialogic": true, "Hide_Player": false, "Sections": 2, "Rain": true},
 }
 
 var current_map: Node
@@ -86,6 +86,18 @@ func process_setting(scene: int):
 		print("Showing Player")
 		player.show()
 		player.enable_movement()
+	var gpu_particles = camera.get_node("Rain")
+	if gpu_particles:
+		if scene_settings[scene].get("Rain", false):
+			gpu_particles.set_process(true)
+			gpu_particles.set_process_internal(true)
+			gpu_particles.show()
+		else:
+			gpu_particles.set_process(false)
+			gpu_particles.set_process_internal(false)
+			gpu_particles.hide()
+		
+		
 
 func process_scene(scene: int, section: int):
 	if section == 1:
@@ -105,7 +117,7 @@ func _process(delta):
 	lerp_instance._process(delta)
 
 func _on_tripwire_body_entered(body, area2d):
-	area2d.disable_collision()
+	area2d.queue_free()
 	print("Body entered the tripwire:", body)
 	print("Tripwire node:", area2d)
 	state = States.SECTION

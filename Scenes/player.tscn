@@ -22,8 +22,8 @@ collision_layer = 2
 script = ExtResource("1_qioep")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.27374e-13, -7)
-scale = Vector2(0.0221539, 0.0226364)
+position = Vector2(0, -10)
+scale = Vector2(0.0329365, 0.0336539)
 sprite_frames = SubResource("SpriteFrames_320ll")
 animation = &"MacFront"
 

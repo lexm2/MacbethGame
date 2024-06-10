@@ -8,12 +8,22 @@
 "sound_moods": {},
 "style": ""
 },
-"default_portrait": "",
+"default_portrait": "Lennox.pixelated",
 "description": "",
 "display_name": "Lennox",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
-"portraits": {},
+"portraits": {
+"Lennox.pixelated": {
+"export_overrides": {
+"image": "\"res://Assets/Portraits/Pixelated/NOBG/Lennox/Lennox.pixelated.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 "scale": 1.0
 }
